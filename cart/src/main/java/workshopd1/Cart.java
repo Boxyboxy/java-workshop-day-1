@@ -7,14 +7,15 @@ public class Cart {
   List<String> shoppingCart = new ArrayList<String>();
   HashSet<String> set = new HashSet();
 
-  public String listCart() {
+  public void listCart() {
     if (this.shoppingCart.isEmpty()) {
-      return "Your cart is empty";
+      System.out.println("Your cart is empty");
+
     } else {
       for (int i = 0; i < this.shoppingCart.size(); i++) {
         System.out.println(i + 1 + ". " + shoppingCart.get(i));
       }
-      return " ";
+
     }
   }
 
@@ -28,14 +29,14 @@ public class Cart {
     }
   }
 
-  public String removeFromCart(int i) {
-    String item = this.shoppingCart.get(i - 1);
-    if (this.set.contains(item)) {
+  public void removeFromCart(int i) {
+    if (i <= 0 || i > this.set.size()) {
+      System.out.println("Incorrect item index");
+    } else {
+      String item = this.shoppingCart.get(i - 1);
       this.shoppingCart.remove(item);
       this.set.remove(item);
-      return item + " removed from cart";
-    } else {
-      return "Incorrect item index";
+      System.out.println(item + " removed from cart");
     }
   }
 
@@ -50,8 +51,8 @@ public class Cart {
       Scanner sc = new Scanner(cons.readLine());
       String cmd = sc.next();
       if (cmd.equals("list")) {
-        String message = cart.listCart();
-        System.out.println(message);
+        cart.listCart();
+
         // if cart is empty, print appropriate message
         // list the contents of your cart
         // contents of cart should be numbered when you are listing them
@@ -65,15 +66,14 @@ public class Cart {
         // add one or more items to the cart. Multiple items are separated by comma
         // if item is in cart, print appropriate message
       } else if (cmd.equals("delete")) {
-        String message4 = cart.removeFromCart(sc.nextInt());
-        System.out.println(message4);
+        cart.removeFromCart(sc.nextInt());
+
         // // delete an item from the cart based on item's index
       } else if (cmd.equals("checkout")) {
         running = false;
+      } else {
+        System.out.println("Please enter a valid input.");
       }
-      // else {
-      // System.out.println("Please enter a valid input.");
-      // }
     }
   }
 }
