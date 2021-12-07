@@ -2,7 +2,6 @@ package workshopd1;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -39,7 +38,7 @@ public class ShoppingCartDB {
         // create path for database
         String userPath = this.directory.getAbsolutePath() + "/" + username + ".db";
         // create database reference
-        this.userDatabase = Path.of(userPath).toFile();
+        this.userDatabase = Path.of(userPath).toFile(); // toFile() method converts Path object to File object
 
         if (!this.userDatabase.exists()) { // if database does not exist
             try {
@@ -67,12 +66,16 @@ public class ShoppingCartDB {
         }
         // buffered reader
         try {
-            // initialise buffered reader
-            BufferedReader reader = Files.newBufferedReader(this.userDatabase.toPath());
-            while ((item = reader.readLine()) != null) {
+            // initialise buffered reader,
+            // Files.newBufferedReader(Path path) Opens a file for reading, returning a
+            // BufferedReader that may be used to read
+            // text from the file in an efficient manner.
+            BufferedReader reader = Files.newBufferedReader(this.userDatabase.toPath()); // .toPath() returns a Path
+                                                                                         // object
+            while ((item = reader.readLine()) != null) { // .readLine() reads a line of text
                 userList.add(item);
             }
-            reader.close();
+            reader.close(); // closes the stream and release system resource associated with it
 
         } catch (IOException e) {
             System.err.println(e);
@@ -88,13 +91,16 @@ public class ShoppingCartDB {
             return;
         }
         try {
-            BufferedWriter writer = Files.newBufferedWriter(this.userDatabase.toPath());
-            writer.flush();
+            // initiliase buffered writer,
+            // Files.newBufferedWriter(Path path) returns a BufferedWriter object
+            BufferedWriter writer = Files.newBufferedWriter(this.userDatabase.toPath()); // .toPath() returns a Path
+                                                                                         // object
+            writer.flush(); // flushes the stream
             // writer.write(this.directory.getName() + '/' + this.userDatabase.getName());
             // writer.newLine();
             for (String item : userList) {
-                writer.write(item);
-                writer.newLine();
+                writer.write(item); // writes a portion of the string
+                writer.newLine(); // writes a line seperator
             }
             writer.close();
             System.out.println("Cart saved into database");
