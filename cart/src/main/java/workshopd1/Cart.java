@@ -88,3 +88,31 @@ public class Cart {
   }
 
 }
+
+/*
+ * public Optional<Item> getItem(int i){
+ * if (i is out of range){
+ * return Optional.isempty();
+ * 
+ * }
+ * Item item = ...
+ * return Optional.of(item);
+ * }
+ * 
+ * https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/
+ * Optional.html
+ */
+
+/*
+ * console works on terminal
+ * scanner more flexible.
+ * 
+ * In general, use scanner over console unless you are doing console
+ * programming.
+ * console can pass the line to scanner.
+ */
+
+/*
+ * Your code must be testable, all about functionality. E.g. if all logic and
+ * code is in one class, you canno test it.
+ */

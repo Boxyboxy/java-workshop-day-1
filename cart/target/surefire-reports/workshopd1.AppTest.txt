@@ -1,8 +1,0 @@
--------------------------------------------------------------------------------
-Test set: workshopd1.AppTest
--------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.106 s <<< FAILURE! - in workshopd1.AppTest
-testdelete(workshopd1.AppTest)  Time elapsed: 0.02 s  <<< FAILURE!
-java.lang.AssertionError
-	at workshopd1.AppTest.testdelete(AppTest.java:44)
-
