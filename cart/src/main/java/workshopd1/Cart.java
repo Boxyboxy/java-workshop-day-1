@@ -21,7 +21,7 @@ public class Cart {
 
   public String addToCart(String item) {
     if (this.set.contains(item)) {
-      return " You have" + item + " in your cart";
+      return " You have " + item + " in your cart";
     } else {
       this.set.add(item);
       this.shoppingCart.add(item);
@@ -31,7 +31,8 @@ public class Cart {
 
   public void removeFromCart(int i) {
     if (i <= 0 || i > this.set.size()) {
-      System.out.println("Incorrect item index");
+      System.out
+          .println("Index selected invalid. Please use positive numbers that are " + this.set.size() + " or less.");
     } else {
       String item = this.shoppingCart.get(i - 1);
       this.shoppingCart.remove(item);
